@@ -4,9 +4,9 @@ using System.IO;
 
 namespace advent_of_code_2022.Day01
 {
-   internal class Day01
+   public class Day01
    {
-      private static void Main()
+      public static void Main01()
       {
          var lines = File.ReadAllLines(@"C:\Users\r.morrison\source\repos\advent-of-code-2022\Day01\input");
 
