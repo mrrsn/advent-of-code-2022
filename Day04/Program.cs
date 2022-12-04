@@ -8,7 +8,9 @@ namespace advent_of_code_2022.Day04
    {
       public static void Main04()
       {
-         var lines = File.ReadAllLines(@"C:\Users\mrrsn\Downloads\advent-of-code-2022-main\Day04\input");
+         var lines = File.ReadAllLines(@"C:\Users\mrrsn\source\repos\advent-of-code-2022\Day04\input");
+         var watch = System.Diagnostics.Stopwatch.StartNew();
+
          var fullyContained = 0;
          var anyOverlap = 0;
          foreach ( var line in lines )
@@ -22,6 +24,8 @@ namespace advent_of_code_2022.Day04
                anyOverlap++;
          }
 
+         watch.Stop();
+         Console.WriteLine( watch.Elapsed );
          Console.WriteLine( fullyContained );
          Console.WriteLine( anyOverlap );
       }
