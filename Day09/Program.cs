@@ -19,22 +19,26 @@ namespace advent_of_code_2022.Day09
          lines.ForEach( line =>
          {
             var move = line.Split( ' ' );
-            MoveHead( move );
-            while ( !AreBothWithin1() )
-               MoveTail( move[0][0] );
+            int i = int.Parse( move[1] );
+            while ( i --> 0 )
+            {
+               MoveHead( move[0][0] );
+
+               while ( !AreBothWithin1() )
+                  MoveTail( move[0][0] );
+            }
          } );
 
          log = log.Distinct().ToList();
          Console.WriteLine( log.Count() );
       }
 
-      private static void MoveHead( string[] move )
+      private static void MoveHead( char dir )
       {
-         var dir = move[0][0];
          if ( dir == 'R' || dir == 'L' )
-            Hx += ( move[0][0] == 'L' ? -1 : 1 ) * int.Parse( move[1] );
+            Hx += dir == 'L' ? -1 : 1;
          else
-            Hy += ( move[0][0] == 'D' ? -1 : 1 ) * int.Parse( move[1] );
+            Hy += dir == 'D' ? -1 : 1;
       }
 
       private static void MoveTail( char dir )
