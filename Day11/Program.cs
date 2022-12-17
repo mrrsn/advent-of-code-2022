@@ -6,6 +6,7 @@ using System.Linq;
 namespace advent_of_code_2022.Day11
 {
    public delegate long CalcDelegate( long x, long y );
+
    public class Item
    {
       public int monkey;
@@ -29,9 +30,8 @@ namespace advent_of_code_2022.Day11
       public static void Main11()
       {
          var lines = File.ReadAllLines(@"C:\Users\mrrsn\source\repos\advent-of-code-2022\Day11\input").ToList();
-         var chunks = new List<string>();
          var items = new List<Item>();
-         var monkeys = FillMonkeys( lines, chunks, out items );
+         var monkeys = FillMonkeys( lines, out items );
          var common = 1;
          monkeys.ForEach( m => common *= m.test );
 
@@ -60,9 +60,10 @@ namespace advent_of_code_2022.Day11
          Console.WriteLine( counts[^2] * counts.Last() );
       }
 
-      private static List<Monkey> FillMonkeys( List<string> lines, List<string> chunks, out List<Item> items )
+      private static List<Monkey> FillMonkeys( List<string> lines, out List<Item> items )
       {
          items = new List<Item>();
+         var chunks = new List<string>();
          var tempItems = new List<Item>();
 
          for ( int i = 0; i < lines.Count - 6; )
